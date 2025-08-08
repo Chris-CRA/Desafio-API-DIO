@@ -41,49 +41,42 @@ Após o deploy no Railway, acesse:
 https://SEU-PROJETO.up.railway.app/swagger-ui.html
 
 
-## 📊 Diagrama de Classes
-```mermaid
-classDiagram
     class Usuario {
-        +Long id
-        +String nome
-        +String email
-        +String senha
+        -Long id
+        -String nome
+        -String email
+        -String senha
     }
 
     class UsuarioDTO {
-        +String nome
-        +String email
+        -String nome
+        -String email
+        -String senha
     }
 
     class UsuarioRepository {
-        <<interface>>
-        +findById(id: Long)
-        +save(usuario: Usuario)
-        +deleteById(id: Long)
     }
 
     class UsuarioService {
-        +listarTodos(): List<UsuarioDTO>
-        +buscarPorId(id: Long): UsuarioDTO
-        +criar(usuarioDTO: UsuarioDTO): UsuarioDTO
-        +atualizar(id: Long, usuarioDTO: UsuarioDTO): UsuarioDTO
-        +deletar(id: Long)
+        +List<Usuario> listarTodos()
+        +Usuario buscarPorId(Long id)
+        +Usuario criar(UsuarioDTO usuarioDTO)
+        +Usuario atualizar(Long id, UsuarioDTO usuarioDTO)
+        +void deletar(Long id)
     }
 
     class UsuarioController {
-        +GET /usuarios
-        +GET /usuarios/{id}
-        +POST /usuarios
-        +PUT /usuarios/{id}
-        +DELETE /usuarios/{id}
+        +ResponseEntity<List<Usuario>> getAll()
+        +ResponseEntity<Usuario> getById(Long id)
+        +ResponseEntity<Usuario> create(UsuarioDTO usuarioDTO)
+        +ResponseEntity<Usuario> update(Long id, UsuarioDTO usuarioDTO)
+        +ResponseEntity<Void> delete(Long id)
     }
 
+    UsuarioDTO --> Usuario
     UsuarioService --> UsuarioRepository
     UsuarioController --> UsuarioService
-    UsuarioService --> Usuario
-    Usuario --> UsuarioDTO
-    UsuarioRepository --> Usuario
+
     
 
 💬 Projeto criado para o Desafio do Bootcamp Santander DIO
