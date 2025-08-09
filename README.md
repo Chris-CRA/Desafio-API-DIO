@@ -38,7 +38,8 @@ http://localhost:8080/swagger-ui.html
 
 
 Após o deploy no Railway, acesse:
-https://SEU-PROJETO.up.railway.app/swagger-ui.html
+jdbc:postgresql://postgres.railway.internal:5432/railway
+
 
 ```mermaid
 classDiagram
