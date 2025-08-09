@@ -40,7 +40,8 @@ http://localhost:8080/swagger-ui.html
 Após o deploy no Railway, acesse:
 https://SEU-PROJETO.up.railway.app/swagger-ui.html
 
-
+```mermaid
+classDiagram
     class Usuario {
         -Long id
         -String nome
@@ -76,6 +77,7 @@ https://SEU-PROJETO.up.railway.app/swagger-ui.html
     UsuarioDTO --> Usuario
     UsuarioService --> UsuarioRepository
     UsuarioController --> UsuarioService
+```
 
     
 
